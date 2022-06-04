@@ -6,6 +6,7 @@ import warnings
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 from IPython.display import clear_output
 from livelossplot.main_logger import MainLogger, LogItem
 from livelossplot.outputs.base_output import BaseOutput
@@ -78,6 +79,7 @@ class MatplotlibPlot(BaseOutput):
         """
         ax.set_title(group_name)
         ax.set_xlabel(x_label)
+        ax.xaxis.set_major_locator(MaxNLocator(min_n_ticks=1, integer=True))
         ax.legend(loc='center right')
 
     def _default_before_plots(self, fig: plt.Figure, axes: np.ndarray, num_of_log_groups: int) -> None:
