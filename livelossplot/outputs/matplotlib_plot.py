@@ -88,7 +88,7 @@ class MatplotlibPlot(BaseOutput):
         """
         clear_output(wait=True)
         figsize_x = self.max_cols * self.cell_size[0]
-        figsize_y = ((num_of_log_groups + 1) // self.max_cols + 1) * self.cell_size[1]
+        figsize_y = math.ceil((num_of_log_groups + len(self.extra_plots)) / self.max_cols) * self.cell_size[1]
         fig.set_size_inches(figsize_x, figsize_y)
         if num_of_log_groups < axes.size:
             for idx, ax in enumerate(axes[-1]):
